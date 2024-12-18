@@ -1,13 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
 import { InputWithLabel } from "@/components/ui/input-with-label";
 import { CheatSheetPreview } from "@/components/cheat-sheet-preview";
 import { Download, Wand2 } from "lucide-react";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
-import html2pdf from 'html2pdf.js';
 import { generateCheatSheet, AIError } from '@/lib/google-ai';
+import html2pdf from 'html2pdf.js';
+
 
 export default function Home() {
   const [topic, setTopic] = useState('');
@@ -58,6 +60,7 @@ export default function Home() {
 
     html2pdf().set(opt).from(element).save();
   };
+  
 
   return (
     <main className="container mx-auto px-4 py-16">
